@@ -1,7 +1,20 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = (e) => {
+    e.preventDefault();
+    navigate('/ConsumoApi/login');
+  };
+
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    navigate('/ConsumoApi/register');
+  };
+
   const total = 25000;
   const token = false;
 
@@ -28,10 +41,10 @@ const Navbar = () => {
           ) : (
             <>
               <li className="nav-item">
-                <a className="nav-link" href="#">🔐 Login</a>
+                <a className="nav-link" href="#" onClick={handleLoginClick}>🔐 Login</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">🔐 Register</a>
+                <a className="nav-link" href="#" onClick={handleRegisterClick}>🔐 Register</a>
               </li>
             </>
           )}
