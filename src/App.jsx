@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Cart from './Components/Home/Cart';
-import Navbar from './Components/Home/Navbar';
-import Login from './Components/Home/Login';
-import Home from './Components/Home/Home';
-import Footer from './Components/Home/Footer';
-import Register from './Components/Home/Register';
-import Header from './Components/Home/Header';
-import pizzas from './Components/Home/Pizzas';
+import Cart from './Components/Cart';
+import Navbar from './Components/Navbar';
+import Login from './Components/Login';
+import Home from './Components/Home';
+import Footer from './Components/Footer';
+import Register from './Components/Register';
+import Header from './Components/Header';
+import pizzas from './Components/Pizzas';
 
 const App = () => {
   const [cart, setCart] = useState([]);
