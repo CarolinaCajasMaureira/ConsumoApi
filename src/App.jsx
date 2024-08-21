@@ -27,7 +27,7 @@ const App = () => {
   const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.quantity, 0);
 
   return (
-    <Router>
+    <Router basename="/ConsumoApi">
       <div>
         <Navbar total={total} /> {/* Pasa el total como prop */}
         <Header />
