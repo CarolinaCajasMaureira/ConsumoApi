@@ -8,6 +8,7 @@ import Footer from './Components/Home/Footer';
 import Register from './Components/Home/Register';
 import Header from './Components/Home/Header';
 import pizzas from './Components/Home/Pizzas';
+import Pizza from './Components/Home/Pizza';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -32,7 +33,8 @@ const App = () => {
         <Navbar total={total} /> {/* Pasa el total como prop */}
         <Header />
         <Routes>
-          <Route path="/" element={<Home addToCart={addToCart} pizzas={pizzas} />} />
+          <Route path="/" element={ <Pizza />} /> 
+          {/* <Route path="/" element={ <Home addToCart={addToCart} pizzas={pizzas} />} />  */}
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} total={total} />} /> {/* Pasa el total como prop */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
