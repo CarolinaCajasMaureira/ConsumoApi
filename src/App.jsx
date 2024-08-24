@@ -34,7 +34,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={ <Pizza />} /> 
-          {/* <Route path="/" element={ <Home addToCart={addToCart} pizzas={pizzas} />} />  */}
+          {/* <Route path="/" element={ <Home addToCart={addToCart} pizzas={pizzas} />} /> Descomentar esta linea y comentar la linea de arriba para ver todas las pizzas */}
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} total={total} />} /> {/* Pasa el total como prop */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
