@@ -1,14 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ total }) => {
-  const navigate = useNavigate();
-  const token = false;
-
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">🍕 Pizzería</a>
+      <Link className="navbar-brand" to="/">🍕 Pizzería</Link>
       <button 
         className="navbar-toggler" 
         type="button" 
@@ -23,29 +20,19 @@ const Navbar = ({ total }) => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#" onClick={() => navigate('/')}>🍕 Home</a>
+            <Link className="nav-link" to="/">🍕 Home</Link>
           </li>
-          {token ? (
-            <>
-              <li className="nav-item">
-                <a className="nav-link" href="#">🔓 Profile</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">🔒 Logout</a>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => navigate('/login')}>🔐 Login</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#" onClick={() => navigate('/register')}>🔐 Register</a>
-              </li>
-            </>
-          )}
           <li className="nav-item">
-            <a className="nav-link" href="#" onClick={() => navigate('/cart')}>🛒 Total: ${total.toLocaleString()}</a>
+            <Link className="nav-link" to="/profile">🔓 Profile</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">🔐 Login</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/register">🔐 Register</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cart">🛒 Total: ${total.toLocaleString()}</Link>
           </li>
         </ul>
       </div>

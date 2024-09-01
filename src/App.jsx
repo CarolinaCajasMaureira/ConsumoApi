@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Cart from './Components/Home/Cart';
+import Cart from './Views/Cart';
 import Navbar from './Components/Home/Navbar';
-import Login from './Components/Home/Login';
-import Home from './Components/Home/Home';
+import Login from './Views/Login';
+import Home from './Views/Home';
 import Footer from './Components/Home/Footer';
-import Register from './Components/Home/Register';
+import Register from './Views/Register';
 import Header from './Components/Home/Header';
 import pizzas from './Components/Home/Pizzas';
-import Pizza from './Components/Home/Pizza';
+import Pizza from './Views/Pizza';
+import NotFound from './Views/NotFound';
+import Profile from './Views/Profile';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -34,10 +36,12 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={ <Pizza />} /> 
-          {/* <Route path="/" element={ <Home addToCart={addToCart} pizzas={pizzas} />} /> Descomentar esta linea y comentar la linea de arriba para ver todas las pizzas */}
+          {/* <Route path="/" element={<Home addToCart={addToCart} pizzas={pizzas} />} /> */}
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} total={total} />} /> {/* Pasa el total como prop */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
