@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CardPizza from '../Components/Home/CardPizza';
+import { useCart } from './CartContext';
 
-const Home = ({ addToCart }) => {
+const Home = () => {
+  const { addToCart } = useCart();
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
@@ -10,7 +12,7 @@ const Home = ({ addToCart }) => {
       .then(data => setPizzas(data))
       .catch(error => console.error('Error al cargar las pizzas:', error));
   }, []);
-  console.log("pizzas: ", pizzas)  
+
   return (
     <div className="container-fluid py-5">
       <div className="row">

@@ -1,23 +1,8 @@
 import React from 'react';
+import { useCart } from './CartContext';
 
-const Cart = ({ cart, setCart, total }) => {
-  const increaseQuantity = (id) => {
-    setCart((prevcart) =>
-      prevcart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decreaseQuantity = (id) => {
-    setCart((prevcart) =>
-      prevcart
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
+const Cart = () => {
+  const { cart, increaseQuantity, decreaseQuantity, total } = useCart();
 
   return (
     <div className="container mt-5">
@@ -43,7 +28,7 @@ const Cart = ({ cart, setCart, total }) => {
             </div>
           ))}
           <div className="list-group-item d-flex justify-content-between">
-            <h5>Total: ${total.toLocaleString()}</h5> {/* Muestra el total */}
+            <h5>Total: ${total.toLocaleString()}</h5>
             <button className="btn btn-primary">Pagar</button>
           </div>
         </div>
