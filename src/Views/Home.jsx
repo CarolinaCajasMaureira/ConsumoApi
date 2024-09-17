@@ -13,6 +13,10 @@ const Home = () => {
       .catch(error => console.error('Error al cargar las pizzas:', error));
   }, []);
 
+  if (pizzas.length === 0) {
+    return <div>No hay pizzas disponibles en este momento.</div>; // Validación para lista vacía
+  }
+
   return (
     <div className="container-fluid py-5">
       <div className="row">

@@ -10,6 +10,7 @@ import Profile from './Views/Profile';
 import NotFound from './Views/NotFound';
 import Footer from './Components/Home/Footer';
 import Header from './Components/Home/Header';
+import Pizza from './Views/Pizza'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

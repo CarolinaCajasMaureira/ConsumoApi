@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import CardPizza from '../Components/Home/CardPizza';
+import { useParams } from 'react-router-dom';
 
-const Pizza = ({ }) => {
-  const [pizzas, setPizzas] = useState(null);
+const Pizza = () => {
+    const { id } = useParams(); 
+    const [pizza, setPizza] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/pizzas/p001')
-      .then(response => response.json())
-      .then(data => setPizzas(data))
-      .catch(error => console.error('Error al cargar las pizzas:', error));
-  }, []);
-  console.log("pizza: ", pizzas)  
-  return (
-    <div className="container-fluid py-5">
-      <div className="row">
-        {pizzas && (
-          <div className="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
-            <CardPizza {...pizzas} />
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    useEffect(() => {
+        const fetchPizza = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/pizzas/${id}`);
+                const data = await response.json();
+                setPizza(data);
+            } catch (error) {
+                console.error('Error fetching pizza:', error);
+            }
+        };
+
+        fetchPizza();
+    }, [id]);
+
+    if (!pizza) return <div>Cargando...</div>;
+
+    return (
+        <div>
+            <h1>{pizza.name}</h1>
+            <p>{pizza.description}</p>
+            <img src={pizza.imageUrl} alt={pizza.name} />
+            <p>Precio: ${pizza.price}</p>
+        </div>
+    );
 };
 
 export default Pizza;
