@@ -7,10 +7,20 @@ const Home = () => {
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/pizzas')
-      .then(response => response.json())
-      .then(data => setPizzas(data))
-      .catch(error => console.error('Error al cargar las pizzas:', error));
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/pizzas');
+        if (!response.ok) {
+          throw new Error('Error al cargar las pizzas');
+        }
+        const data = await response.json();
+        setPizzas(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPizzas();
   }, []);
 
   if (pizzas.length === 0) {

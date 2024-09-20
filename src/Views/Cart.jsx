@@ -1,8 +1,10 @@
 import React from 'react';
 import { useCart } from './CartContext';
+import { useUserContext } from '../Views/UserContext'; // Importar el contexto de usuario
 
 const Cart = () => {
   const { cart, increaseQuantity, decreaseQuantity, total } = useCart();
+  const { token } = useUserContext(); // Obtener el estado del token
 
   return (
     <div className="container mt-5">
@@ -29,7 +31,7 @@ const Cart = () => {
           ))}
           <div className="list-group-item d-flex justify-content-between">
             <h5>Total: ${total.toLocaleString()}</h5>
-            <button className="btn btn-primary">Pagar</button>
+            <button className="btn btn-primary" disabled={!token}>Pagar</button> {/* Deshabilitar el botón si token es false */}
           </div>
         </div>
       )}

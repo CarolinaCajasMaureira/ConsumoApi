@@ -2,11 +2,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../Views/CartContext';
-import { useUserContext } from '../../Views/UserContext'; // Importa el contexto de usuario
+import { useUserContext } from '../../Views/UserContext'; 
 
 const Navbar = () => {
   const { total } = useCart();
-  const { token, logout } = useUserContext(); // Usa el contexto de usuario
+  const { token, logout } = useUserContext(); 
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -24,17 +24,12 @@ const Navbar = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav mr-auto">
-          {/* Enlace Home siempre visible */}
           <li className="nav-item">
             <Link className="nav-link" to="/">🍕 Home</Link>
           </li>
-
-          {/* Total siempre visible */}
           <li className="nav-item">
             <Link className="nav-link" to="/cart">🛒 Total: ${total.toLocaleString()}</Link>
           </li>
-
-          {/* Mostrar Profile y Logout si el token es true */}
           {token ? (
             <>
               <li className="nav-item">
@@ -45,7 +40,6 @@ const Navbar = () => {
               </li>
             </>
           ) : (
-            // Mostrar Login y Register si el token es false
             <>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">🔐 Login</Link>
