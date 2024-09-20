@@ -1,10 +1,10 @@
 import React from 'react';
 import { useCart } from './CartContext';
-import { useUserContext } from '../Views/UserContext'; // Importar el contexto de usuario
+import { useUserContext } from '../Views/UserContext'; 
 
 const Cart = () => {
   const { cart, increaseQuantity, decreaseQuantity, total } = useCart();
-  const { token } = useUserContext(); // Obtener el estado del token
+  const { token } = useUserContext(); 
 
   return (
     <div className="container mt-5">
