@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from './UserContext'; // Importa el UserContext
 
 const Login = ({ registeredUsers }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { setToken } = useUserContext(); // Obtiene setToken desde UserContext
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,8 +26,9 @@ const Login = ({ registeredUsers }) => {
       return;
     }
 
-    // Redirigir al Home después de iniciar sesión exitosamente
-    navigate('/');
+    // Establecer el token y redirigir al Home después de iniciar sesión exitosamente
+    setToken(true); // Establece el token a true
+    navigate('/'); // Redirige al Home
   };
 
   return (
