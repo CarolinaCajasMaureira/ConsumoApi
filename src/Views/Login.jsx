@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ user }) => {
+const Login = ({ registeredUsers }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,12 +16,16 @@ const Login = ({ user }) => {
       return;
     }
 
-    if (!user || user.email !== email || user.password !== password) {
+    // Verificar si el correo y la contraseña coinciden con algún usuario registrado
+    const user = registeredUsers.find(user => user.email === email && user.password === password);
+
+    if (!user) {
       setError('Credenciales incorrectas.');
       return;
     }
 
-    navigate('/ConsumoApi');
+    // Redirigir al Home después de iniciar sesión exitosamente
+    navigate('/');
   };
 
   return (

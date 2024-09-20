@@ -20,8 +20,7 @@ const CardPizza = ({ name, price, ingredients, img, id, addToCart }) => {
         </ul>
         <p className="card-text">Precio: ${price.toLocaleString()}</p>
         <div className="d-flex justify-content-between">
-          {/* Cambiar el enlace a un botón para evitar el comportamiento del <a> */}
-          <button onClick={goToPizza} className="btn btn-secondary">Ver más🍕</button>
+          <button onClick={() => goToPizza()} className="btn btn-secondary">Ver más🍕</button>
           <button onClick={addToCart} className="btn btn-dark">Añadir🛒</button>
         </div>
       </div>

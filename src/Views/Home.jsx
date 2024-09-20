@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   if (pizzas.length === 0) {
-    return <div>No hay pizzas disponibles en este momento.</div>; // Validación para lista vacía
+    return <div>No hay pizzas disponibles en este momento.</div>; 
   }
 
   return (
