@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from './UserContext'; 
 
-const Login = ({ registeredUsers }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { setToken } = useUserContext(); 
+  const { login } = useUserContext(); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -18,15 +18,12 @@ const Login = ({ registeredUsers }) => {
       return;
     }
 
-    const user = registeredUsers.find(user => user.email === email && user.password === password);
-
-    if (!user) {
+    try {
+      await login(email, password);
+      navigate('/'); // Redirige al Home después del login exitoso
+    } catch (error) {
       setError('Credenciales incorrectas.');
-      return;
     }
-
-    setToken(true); // Establece el token a true
-    navigate('/'); // Redirige al Home
   };
 
   return (
